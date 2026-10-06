@@ -6,7 +6,15 @@ For Week 4, I worked on a **Penetration Testing Project** based on the Mediroza 
 
 Throughout the practical, I worked through different stages including **reconnaissance, login testing, SQL injection, password/hash cracking, metadata analysis, backup discovery, and data analysis**. 🔐💻
 
-> ⚠️ **Ethical Notice:** This practical was performed in an authorised educational environment for learning purposes only. These techniques should never be used against systems without explicit written permission.
+> ⚠️ **Ethical Notice:** This practical was performed in an authorised educational environment for learning purposes only. These techniques should never be used against systems without explicit written permission. 
+
+
+| Submitted by:      | Indra bahadur kc                                                     |
+| -------------- | ----------------------- |
+| Program / Batch: |  B083 – Networkwalks |
+| Week:    | 04
+| Date: | 06-10-2026 |
+| Instructor: | Waqas Karim (CCIE) |.
 
 ---
 # 🧰 Tools Used
@@ -57,9 +65,8 @@ The reconnaissance revealed directories such as:
 
 The `/patient/` directory was useful for the initial access stage, while `/old/` became important later during deeper reconnaissance.
 
-### 📸 Screenshot
+<img width="2860" height="1744" alt="Screenshot 2026-10-06 070636" src="https://github.com/user-attachments/assets/2f1d5fc2-410b-4965-8cc3-8eacea8beba1" />
 
-**[UPLOAD SCREENSHOT HERE — robots.txt / reconnaissance]**
 
 ---
 
@@ -69,9 +76,8 @@ After discovering the `/patient/` directory, I accessed it through the browser.
 
 This revealed a **patient login page**, which became the main entry point for testing the application's authentication security.
 
-### 📸 Screenshot
+<img width="2870" height="1660" alt="Screenshot 2026-10-06 070355" src="https://github.com/user-attachments/assets/afd34c2e-6dee-4f1c-b2c3-b55bde31f6e3" />
 
-**[UPLOAD SCREENSHOT HERE — Patient Login Page]**
 
 ---
 
@@ -88,12 +94,9 @@ I then tested the `admin` username and received:
 > **Incorrect password**
 
 The different responses confirmed that the application could distinguish between an invalid username and a valid username with an incorrect password.
+ 
+<img width="2868" height="1578" alt="Screenshot 2026-10-06 081507" src="https://github.com/user-attachments/assets/3229d2ba-9427-4e2b-aad9-6d6782b7f2d1" />
 
-This is known as **username enumeration** and can help an attacker identify valid accounts. 🔎👤
-
-### 📸 Screenshot
-
-**[UPLOAD SCREENSHOT HERE — Username enumeration results]**
 
 ---
 
@@ -103,11 +106,10 @@ After identifying a valid username, I tested the login field for **SQL Injection
 
 A single quote was entered into the username field. The application returned a MySQL syntax error, indicating that user input was being passed directly into the database query.
 
-This confirmed that the login form was vulnerable to SQL injection. 💻💉
+This confirmed that the login form was vulnerable to SQL injection. 
 
-### 📸 Screenshot
+<img width="2826" height="1752" alt="Screenshot 2026-10-06 070434" src="https://github.com/user-attachments/assets/1729c979-6dc9-4ebc-a11a-cfebdadad184" />
 
-**[UPLOAD SCREENSHOT HERE — SQL Injection error]**
 
 ---
 
@@ -117,11 +119,10 @@ I then demonstrated how the SQL injection vulnerability could be used to bypass 
 
 The vulnerable application accepted an SQL comment-based input and allowed access to the patient portal without knowing the legitimate password.
 
-After successful login, the portal displayed **three patient reports**. 🔓📄
+After successful login, the portal displayed 
 
-### 📸 Screenshot
+<img width="2880" height="1550" alt="Screenshot 2026-10-06 070326" src="https://github.com/user-attachments/assets/cec3181b-0b65-4761-89e6-e0b53cdfbac9" />
 
-**[UPLOAD SCREENSHOT HERE — Successful login / patient portal]**
 
 ---
 
@@ -135,9 +136,6 @@ After gaining access to the portal, I downloaded the three available PDF reports
 
 These files were then used for the next stage of the practical.
 
-### 📸 Screenshot
-
-**[UPLOAD SCREENSHOT HERE — Downloaded PDF reports]**
 
 ---
 
@@ -153,9 +151,8 @@ The extracted hashes were then used for password-cracking tests. 🔑🧪
 
 * Networkwalks PDF Hash Calculator
 
-### 📸 Screenshot
+<img width="2880" height="1624" alt="Screenshot 2026-10-06 070312" src="https://github.com/user-attachments/assets/d56d4d0a-701d-45fe-b21a-33695ea6a197" />
 
-**[UPLOAD SCREENSHOT HERE — PDF hash extraction]**
 
 ---
 
@@ -170,11 +167,9 @@ The first two reports were successfully cracked:
 | `patient_report_1.pdf` | `123456`   |
 | `patient_report_2.pdf` | `password` |
 
-This demonstrated the risk of using weak and commonly used passwords to protect sensitive files. 🔓🔑
+This demonstrated the risk of using weak and commonly used passwords to protect sensitive files. 
 
-### 📸 Screenshot
-
-**[UPLOAD SCREENSHOT HERE — Password cracking results]**
+<img width="2824" height="1688" alt="Screenshot 2026-10-06 082220" src="https://github.com/user-attachments/assets/c6940954-120e-4889-8d58-8f9a2b322b0d" />
 
 ---
 
@@ -188,11 +183,9 @@ The tool returned:
 
 I then used the provided **John the Ripper (JTR) wordlist** and successfully recovered the password for the third report.
 
-This showed me why penetration testers may need to use different wordlists when testing password strength. 🧠🔐
+This showed me why penetration testers may need to use different wordlists when testing password strength. 
 
-### 📸 Screenshot
-
-**[UPLOAD SCREENSHOT HERE — JTR wordlist cracking]**
+<img width="2878" height="1770" alt="Screenshot 2026-10-06 082402" src="https://github.com/user-attachments/assets/e9ee6021-9362-42c4-affb-f555fcb86b57" />
 
 ---
 
@@ -206,9 +199,9 @@ This allowed the complete file metadata to be inspected during the next stage.
 
 * `qpdf`
 
-### 📸 Screenshot
 
-**[UPLOAD SCREENSHOT HERE — qpdf PDF decryption]**
+<img width="2754" height="1588" alt="Screenshot 2026-10-06 082547" src="https://github.com/user-attachments/assets/52dffa33-85a3-40c9-9052-e946e06792f6" />
+
 
 ---
 
@@ -221,11 +214,10 @@ The metadata contained useful information including:
 * **Author:** `j.malik`
 * **Comments:** A note indicating that a database backup had been moved to `/old/`.
 
-This was an important discovery because the information inside the PDF provided a clue about another potentially exposed location on the server. 🕵️‍♂️📋
+This was an important discovery because the information inside the PDF provided a clue about another potentially exposed location on the server. 
 
-### 📸 Screenshot
+<img width="2856" height="1668" alt="Screenshot 2026-10-06 082718" src="https://github.com/user-attachments/assets/55ce6165-44e8-413d-a4be-b675f6806ff9" />
 
-**[UPLOAD SCREENSHOT HERE — ExifTool metadata results]**
 
 ---
 
@@ -239,11 +231,9 @@ A database backup file named:
 
 `mediroza_db_backup_2019.sql`
 
-was visible and could be downloaded. 🗃️⚠️
+was visible and could be downloaded. 
+<img width="2756" height="1574" alt="Screenshot 2026-10-06 082914" src="https://github.com/user-attachments/assets/627953b1-5295-427c-9474-9ee327556877" />
 
-### 📸 Screenshot
-
-**[UPLOAD SCREENSHOT HERE — /old/ directory listing]**
 
 ---
 
@@ -255,27 +245,9 @@ I analysed the relevant database entries and used the information to understand 
 
 The practical focused on the **staff** and **shareholders** data contained in the backup. This demonstrated how an accidentally exposed database backup can lead to significant information disclosure. 📊💾
 
-### 📸 Screenshot
+<img width="2756" height="1566" alt="Screenshot 2026-10-06 065946" src="https://github.com/user-attachments/assets/c540d527-aa61-4f04-9f71-549814bf5db6" />
 
-**[UPLOAD SCREENSHOT HERE — SQL database contents]**
 
----
-
-# 🔗 14. Connecting the Findings
-
-One of the most interesting parts of this practical was connecting the different findings together.
-
-The author discovered in the PDF metadata was:
-
-**Jameel Malik**
-
-The staff information in the database contained the same person, identified as an IT Systems Administrator.
-
-This showed how seemingly small pieces of information can be connected during a penetration test to create a complete attack chain. 🧩🔎
-
-### 📸 Screenshot
-
-**[UPLOAD SCREENSHOT HERE — Evidence connection / staff information]**
 
 ---
 
